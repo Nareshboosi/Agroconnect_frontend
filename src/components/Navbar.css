@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  color: white;
+}
+
+/* ROLE COLORS */
+.navbar.farmer {
+  background: linear-gradient(90deg, #166534, #22c55e);
+}
+
+.navbar.buyer {
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+}
+
+.navbar.admin {
+  background: linear-gradient(90deg, #4c1d95, #9333ea);
+}
+
+.nav-left h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-right {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-right li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-right li:hover {
+  text-decoration: underline;
+}
+
+.logout {
+  background: rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 6px;
+}

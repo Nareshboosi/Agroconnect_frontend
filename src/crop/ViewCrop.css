@@ -1,0 +1,70 @@
+.viewcrop-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.viewcrop-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2f855a;
+}
+
+.viewcrop-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.viewcrop-card .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.viewcrop-card span {
+  font-weight: 600;
+  color: #374151;
+}
+
+.viewcrop-card p {
+  color: #1f2937;
+}
+
+.viewcrop-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-btn {
+  padding: 10px 25px;
+  background: #2f855a;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #276749;
+}
+
+.viewcrop-loading,
+.viewcrop-error {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.viewcrop-error button {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border-radius: 6px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

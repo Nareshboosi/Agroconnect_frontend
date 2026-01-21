@@ -1,0 +1,46 @@
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.data-table th,
+.data-table td {
+  padding: 14px;
+  text-align: left;
+}
+
+.data-table thead {
+  background: #6a11cb;
+  color: white;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: #f5f7fb;
+}
+
+.data-table tbody tr:hover {
+  background: #eef1ff;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn.danger {
+  background: #dc2626;
+  color: white;
+}

@@ -1,0 +1,55 @@
+.admin-orders {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.status.pending { background: #fff3cd; }
+.status.confirmed { background: #cce5ff; }
+.status.delivered { background: #d4edda; }
+.status.cancelled { background: #f8d7da; }
+
+.payment-info {
+  margin-top: 10px;
+}
+
+.paid { color: green; font-weight: bold; }
+.unpaid { color: red; }
+
+.pending { color: orange; }
+.success { color: green; }
+
+.refund-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.refund-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

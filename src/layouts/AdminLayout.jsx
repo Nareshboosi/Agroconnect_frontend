@@ -1,21 +1,21 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import AdminNavbar from "../components/Navbar";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import AdminBottomNav from "../components/AdminBottomNav";
 
 const AdminLayout = () => {
-  const navigate = useNavigate();
-
-  const logout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
   return (
-    <>
-      <AdminNavbar onLogout={logout} />
-      <main className="p-6">
+    <div className="min-h-screen w-full pb-16">
+      {/* TOP NAV */}
+      <Navbar />
+
+      {/* PAGE CONTENT */}
+      <main className="w-full px-3 sm:px-6 py-6">
         <Outlet />
       </main>
-    </>
+
+      {/* MOBILE BOTTOM NAV */}
+      <AdminBottomNav />
+    </div>
   );
 };
 

@@ -1,4 +1,8 @@
+
+
+
 import { useNavigate } from "react-router-dom";
+import MarketPricesTable from "../shared/MarketPricesTable";
 
 const BuyerDashboard = () => {
   const navigate = useNavigate();
@@ -6,17 +10,18 @@ const BuyerDashboard = () => {
   const cards = [
     { title: "Browse Crops", color: "bg-green-600", path: "/buyer/browse" },
     { title: "My Orders", color: "bg-blue-600", path: "/buyer/orders" },
-    { title: "Cart", color: "bg-purple-600", path: "/buyer/Cart" },
+    { title: "Cart", color: "bg-purple-600", path: "/buyer/cart" },
   ];
 
   return (
-    <>
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+    <div className="space-y-10">
+      <h2 className="text-2xl font-bold text-gray-800">
         Buyer Dashboard
       </h2>
 
+      {/* QUICK ACTIONS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {cards.map((card) => (
+        {cards.map(card => (
           <div
             key={card.title}
             onClick={() => navigate(card.path)}
@@ -29,8 +34,12 @@ const BuyerDashboard = () => {
           </div>
         ))}
       </div>
-    </>
+
+      {/* MARKET PRICES */}
+      <MarketPricesTable />
+    </div>
   );
 };
 
 export default BuyerDashboard;
+

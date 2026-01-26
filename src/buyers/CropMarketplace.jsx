@@ -25,7 +25,7 @@ function CropMarketplace() {
             <p>Farmer: {crop.farmer.name}</p>
 
             <button onClick={() => addToCart(crop)}>
-              Add to Cart
+              Add to Cart++++
             </button>
           </div>
         ))}

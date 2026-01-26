@@ -80,3 +80,24 @@
   font-size: 2rem;
   font-weight: bold;
 }
+.nav-left {
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ultra-small screens */
+@media (max-width: 290px) {
+  .nav-left {
+    font-size: 16px;   /* shrink logo text */
+  }
+
+  .logout {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+}
+html, body {
+  min-width: 290px;   /* ✅ HARD STOP */
+  overflow-x: hidden;
+}

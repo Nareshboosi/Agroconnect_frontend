@@ -20,7 +20,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 /* FARMER */
 import AddCrop from "./farmer/AddCrop";
 import MyCrops from "./farmer/FarmerCrops";
-import FarmerOrders from "./farmer/FarmerOrder";
+
 
 /* BUYER */
 import BrowseCrops from "./buyers/BrowseCrops";
@@ -29,6 +29,7 @@ import Cart from "./cart/Cart";
 
 /* ADMIN */
 import AllUsers from "./utils/admin/AllUsers";
+
 import Crops from "./crop/CropList";
 import MarketList from "./market/MarketList";
 import EditMarket from "./market/EditMarket";
@@ -37,6 +38,11 @@ import ViewCrop from "./crop/ViewCrop";
 import EditCrop from "./crop/EditCrop";
 import CropList from "./crop/CropList";
 import EditFarmerCrop from "./farmer/EditFarmerCrop";
+import AdminOrders from "./utils/admin/AdminOrders";
+import FarmerOrders from "./farmer/farmerOrder";
+import AdminCrops from "./utils/admin/AdminCrops";
+import AdminRefundAudit from "./utils/admin/AdminRefundAudit";
+import BuyerRefunds from "./buyers/BuyerRefunds";
 
 
 function App() {
@@ -70,12 +76,18 @@ function App() {
     <Route path="browse" element={<BrowseCrops />} />
     <Route path="orders" element={<BuyerOrders />} />
     <Route path="cart" element={<Cart />} />
+    <Route path="/buyer/refunds" element={<BuyerRefunds />} />
+
   </Route>
 
   {/* ADMIN */}
   <Route path="/admin" element={<AdminLayout />}>
     <Route index element={<Navigate to="dashboard" replace />} />
     <Route path="dashboard" element={<AdminDashboard />} />
+    <Route path="/admin/orders" element={<AdminOrders />} />
+    <Route path="admin/crops" element={<AdminCrops/>}/>
+    <Route path="/admin/refund-audit" element={<AdminRefundAudit />} />
+
 
     {/* USERS */}
     <Route path="users" element={<AllUsers />} />

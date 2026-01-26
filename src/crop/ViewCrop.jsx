@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../utils/api";
-// import api from "../../utils/api"; // axios instance with token
 import "./ViewCrop.css";
+
 const ViewCrop = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,63 +17,41 @@ const ViewCrop = () => {
         const res = await api.get(`/crops/${id}`);
         setCrop(res.data);
       } catch (err) {
-        if (err.response?.status === 403) {
-          setError("Access Denied");
-        } else if (err.response?.status === 404) {
-          setError("Crop not found");
-        } else {
-          setError("Failed to load crop details");
-        }
+        if (err.response?.status === 403) setError("Access Denied");
+        else if (err.response?.status === 404) setError("Crop not found");
+        else setError("Failed to load crop details");
       } finally {
         setLoading(false);
       }
     };
-
     fetchCrop();
   }, [id]);
 
-  if (loading) {
-    return <div className="viewcrop-loading">Loading crop details...</div>;
-  }
-
-  if (error) {
+  if (loading) return <div className="viewcrop-loading">Loading...</div>;
+  if (error)
     return (
       <div className="viewcrop-error">
         <h2>{error}</h2>
         <button onClick={() => navigate(-1)}>Go Back</button>
       </div>
     );
-  }
 
   return (
     <div className="viewcrop-container">
       <h2 className="viewcrop-title">Crop Details</h2>
-
       <div className="viewcrop-card">
-        <div className="row">
-          <span>Crop Name</span>
-          <p>{crop.cropName}</p>
-        </div>
-
-        <div className="row">
-          <span>Crop Type</span>
-          <p>{crop.cropType}</p>
-        </div>
-
-        <div className="row">
-          <span>Season</span>
-          <p>{crop.season}</p>
-        </div>
-
-        <div className="row">
-          <span>Quantity</span>
-          <p>{crop.availableQuantity} Kg</p>
-        </div>
-
-        <div className="row">
-          <span>Price</span>
-          <p>₹ {crop.price}</p>
-        </div>
+        {[
+          ["Crop Name", crop.cropName],
+          ["Crop Type", crop.cropType],
+          ["Season", crop.season],
+          ["Quantity", `${crop.availableQuantity} Kg`],
+          ["Price", `₹ ${crop.price}`],
+        ].map(([label, value]) => (
+          <div className="row" key={label}>
+            <span>{label}</span>
+            <p>{value}</p>
+          </div>
+        ))}
       </div>
 
       <div className="viewcrop-actions">
@@ -86,4 +64,3 @@ const ViewCrop = () => {
 };
 
 export default ViewCrop;
-

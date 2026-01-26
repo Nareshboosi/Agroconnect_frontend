@@ -1,9 +1,24 @@
+/* GLOBAL SAFETY */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================
+   NAVBAR BASE
+========================= */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px 30px;
-  color: white;
+
+  padding: 12px 16px;
+  color: #fff;
 }
 
 /* ROLE COLORS */
@@ -19,30 +34,97 @@
   background: linear-gradient(90deg, #4c1d95, #9333ea);
 }
 
-.nav-left h2 {
-  font-size: 22px;
-  font-weight: bold;
+/* =========================
+   LEFT
+========================= */
+.nav-left {
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
+/* =========================
+   RIGHT
+========================= */
 .nav-right {
+  margin-left: auto;     /* 🔥 keeps everything right-aligned */
   display: flex;
-  gap: 22px;
-  list-style: none;
   align-items: center;
+  gap: 16px;
+
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .nav-right li {
   cursor: pointer;
+  font-size: 14px;
   font-weight: 500;
-  transition: 0.3s;
+  white-space: nowrap;
 }
 
 .nav-right li:hover {
   text-decoration: underline;
 }
 
+/* LOGOUT */
 .logout {
-  background: rgba(255,255,255,0.2);
-  padding: 6px 12px;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.logout:hover {
+  text-decoration: none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  /* Hide desktop links */
+  .desktop-only {
+    display: none;
+  }
+
+  /* Keep navbar clean */
+  .navbar {
+    padding: 12px 14px;
+  }
+
+  /* Logout stays right */
+  .nav-right {
+    margin-left: auto;
+  }
+
+  .logout {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+}
+/* =========================
+   ADMIN NAVBAR TWEAKS
+========================= */
+.navbar.admin .nav-right li.desktop-only {
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.navbar.admin .nav-right li.desktop-only:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Highlight refund section subtly */
+.navbar.admin .nav-right li.desktop-only:last-child {
+  color: #fecaca; /* light red */
+}
+.navbar.admin .nav-right li.active {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
 }

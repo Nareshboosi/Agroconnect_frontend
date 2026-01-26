@@ -28,12 +28,11 @@ const MyCrops = () => {
 
   return (
     <div className="p-4">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
         <h2 className="text-xl font-bold">My Crops</h2>
-
         <button
           onClick={() => navigate("/crops/add")}
-          className="bg-green-600 text-white px-4 py-2 rounded"
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
         >
           + Add Crop
         </button>
@@ -41,13 +40,12 @@ const MyCrops = () => {
 
       <input
         placeholder="Search crop..."
-        className="border p-2 rounded mb-4 w-full md:w-1/3"
+        className="border p-2 rounded mb-4 w-full sm:w-1/2 md:w-1/3"
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* Responsive Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full border">
+      <div className="overflow-x-auto rounded-lg shadow">
+        <table className="w-full bg-white">
           <thead className="bg-gray-700 text-white">
             <tr>
               <th className="p-2">Name</th>
@@ -61,25 +59,27 @@ const MyCrops = () => {
 
           <tbody>
             {filtered.map((c) => (
-              <tr key={c.id} className="border-b text-center">
+              <tr key={c.id} className="border-b text-center hover:bg-gray-50">
                 <td className="p-2">{c.cropName}</td>
                 <td className="p-2">{c.cropType}</td>
                 <td className="p-2">{c.quantity}</td>
                 <td className="p-2">₹ {c.price}</td>
                 <td className="p-2">{c.season}</td>
-                <td className="p-2 flex justify-center gap-2">
-                  <button
-                    onClick={() => navigate(`/edit-crop/${c.id}`)}
-                    className="bg-blue-600 text-white px-3 py-1 rounded"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(c.id)}
-                    className="bg-red-600 text-white px-3 py-1 rounded"
-                  >
-                    Delete
-                  </button>
+                <td className="p-2">
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <button
+                      onClick={() => navigate(`/edit-crop/${c.id}`)}
+                      className="bg-blue-600 text-white px-3 py-1 rounded"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(c.id)}
+                      className="bg-red-600 text-white px-3 py-1 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

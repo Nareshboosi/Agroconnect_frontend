@@ -126,3 +126,13 @@
   color: #2e7d32;
   border-bottom: 3px solid #2e7d32;
 }
+.paid-btn {
+  background: #2e7d32;
+  color: white;
+  cursor: not-allowed;
+}
+
+.pay-btn {
+  background: #1976d2;
+  color: white;
+}

@@ -3,8 +3,15 @@ import axios from "../api/axios";
 
 
 // REGISTER
-export const register = async (data) => {
-  return axios.post("/auth/register", data);
+export const register = (data) => {
+  if (data.role === "FARMER")
+    return axios.post("/auth/register/farmer", data);
+
+  if (data.role === "BUYER")
+    return axios.post("/auth/register/buyer", data);
+
+  if (data.role === "ADMIN")
+    return axios.post("/auth/register/admin", data);
 };
 
 

@@ -133,7 +133,7 @@ const Register = () => {
           >
             <option value="FARMER">Farmer</option>
             <option value="BUYER">Buyer</option>
-            <option value="ADMIN">Admin</option>
+            {/*<option value="ADMIN">Admin</option>*/}
           </select>
 
           {/* SUBMIT */}

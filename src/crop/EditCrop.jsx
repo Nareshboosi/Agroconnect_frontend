@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios"; // ✅ use existing axios.js
 
 const EditCrop = () => {
   const { id } = useParams();
@@ -16,12 +15,8 @@ const EditCrop = () => {
   });
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/crops/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+    api
+      .get(`/crops/${id}`) // ✅ NO localhost
       .then((res) => setForm(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -32,11 +27,7 @@ const EditCrop = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/crops/${id}`, form, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await api.put(`/crops/${id}`, form); // ✅ NO localhost
       alert("✅ Crop updated successfully");
       navigate("/my-crops");
     } catch (err) {
@@ -68,8 +59,8 @@ const EditCrop = () => {
 
         <input
           type="number"
-          name="availableQuantity"
-          value={form.availableQuantity}
+          name="quantity"
+          value={form.quantity}
           onChange={handleChange}
           className="w-full border p-2 rounded"
           placeholder="Quantity"
@@ -84,8 +75,10 @@ const EditCrop = () => {
           placeholder="Price"
         />
 
-        <button className="w-full bg-green-700 text-white py-2 rounded
-                           hover:bg-green-800 transition transform hover:scale-105">
+        <button
+          className="w-full bg-green-700 text-white py-2 rounded
+                     hover:bg-green-800 transition transform hover:scale-105"
+        >
           Update Crop
         </button>
       </form>

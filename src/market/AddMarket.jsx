@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios"; // ✅ use existing axios.js
 
 const AddMarket = () => {
   const navigate = useNavigate();
@@ -19,17 +19,11 @@ const AddMarket = () => {
   useEffect(() => {
     const role = localStorage.getItem("role");
 
-    const url =
-      role === "ADMIN"
-        ? "http://localhost:8080/api/crops/all"
-        : "http://localhost:8080/api/crops/my-crops";
+    const endpoint =
+      role === "ADMIN" ? "/crops/all" : "/crops/my-crops";
 
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+    api
+      .get(endpoint) // ✅ NO localhost
       .then((res) => {
         console.log("CROPS:", res.data);
         setCrops(res.data);
@@ -61,19 +55,11 @@ const AddMarket = () => {
     }
 
     try {
-      await axios.post(
-        "http://localhost:8080/api/market-prices",
-        {
-          cropId: Number(form.cropId), // ✅ IMPORTANT
-          marketName: form.marketName,
-          pricePerQuintal: Number(form.pricePerQuintal),
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      await api.post("/market-prices", {
+        cropId: Number(form.cropId), // ✅ IMPORTANT
+        marketName: form.marketName,
+        pricePerQuintal: Number(form.pricePerQuintal),
+      });
 
       alert("✅ Market price added successfully");
 
@@ -86,7 +72,7 @@ const AddMarket = () => {
   };
 
   // =========================
-  // UI
+  // UI (UNCHANGED)
   // =========================
   return (
     <div className="min-h-screen flex justify-center items-start bg-gray-100 pt-10 px-4">

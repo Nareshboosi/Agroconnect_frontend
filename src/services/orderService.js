@@ -1,12 +1,5 @@
-import axios from "axios";
+import api from "../api/axios"; // adjust path if needed
 
-const API_URL = "http://localhost:8080/api/orders";
-
-export const placeOrder = (orderData, token) => {
-  return axios.post(`${API_URL}/place`, orderData, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
+export const placeOrder = (orderData) => {
+  return api.post("/orders/place", orderData);
 };

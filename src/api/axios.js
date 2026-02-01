@@ -1,8 +1,7 @@
 import axios from "axios";
-import { getToken } from "../auth/authService";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
 // 🔥 ATTACH TOKEN TO EVERY REQUEST
@@ -20,5 +19,3 @@ instance.interceptors.request.use(
 );
 
 export default instance;
-
-

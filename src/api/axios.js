@@ -1,7 +1,11 @@
 import axios from "axios";
 
-
-
+/**
+ * Central Axios instance
+ * Works for:
+ * - Local: http://localhost:8080
+ * - Production (Render): https://agroconnect-uenl.onrender.com
+ */
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api`,
   headers: {
@@ -9,8 +13,8 @@ const api = axios.create({
   },
 });
 
-// 🔥 ATTACH TOKEN TO EVERY REQUEST
-instance.interceptors.request.use(
+// 🔐 Attach JWT token to every request
+api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 

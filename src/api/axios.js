@@ -3,8 +3,8 @@ import axios from "axios";
 /**
  * Central Axios instance
  * Works for:
- * - Local: http://localhost:8080
- * - Production (Render): https://agroconnect-uenl.onrender.com
+ * - Local backend
+ * - Render backend
  */
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api`,

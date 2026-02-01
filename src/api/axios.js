@@ -1,6 +1,12 @@
 import axios from "axios";
-const instance = axios.create({
+
+
+
+const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // 🔥 ATTACH TOKEN TO EVERY REQUEST

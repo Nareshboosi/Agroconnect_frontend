@@ -20,19 +20,29 @@ const AddCrop = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      await api.post("/crops/add", form);
+  try {
+    // ✅ Convert string values to numbers
+    const payload = {
+      ...form,
+      quantity: parseInt(form.quantity),
+      price: parseFloat(form.price),
+    };
 
-      alert("✅ Crop added successfully");
-      navigate("/my-crops");
-    } catch (error) {
-      console.error("Add crop error:", error);
-      alert("❌ Failed to add crop");
-    }
-  };
+    console.log("Sending payload:", payload);
+
+    await api.post("/crops/add", payload);
+
+    alert("✅ Crop added successfully");
+    navigate("/my-crops");
+  } catch (error) {
+    console.error("Add crop error:", error.response?.data);
+    alert("❌ Failed to add crop");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
